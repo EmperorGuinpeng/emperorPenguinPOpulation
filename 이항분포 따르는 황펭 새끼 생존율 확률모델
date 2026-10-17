@@ -1,0 +1,19 @@
+import scipy.stats as stats
+import matplotlib.pyplot as plt
+
+n=100
+p=0.285
+ks=range(n+1)
+ps=range(0,100,1)
+
+fig, ax= plt.subplots()
+
+#ax.plot(ks, [stats.binom.pmf(k, n, p) for k in ks], label='binomial')
+#새끼 생존율 확률 그래프
+
+ax.plot(ps, [stats.binom.pmf(0,n,0.01*p) for p in ps], label='extinction')
+#황펭 탄생 0마리 확률! (1-p)^n임
+plt.plot(0.285*100, stats.binom.pmf(0,n,0.285), 'ro')
+ax.set_xlabel('survival(%)')
+ax.set_ylabel('zero-birth probability')
+plt.show()
