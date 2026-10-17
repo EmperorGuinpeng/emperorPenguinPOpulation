@@ -1,0 +1,34 @@
+import math
+import matplotlib.pyplot as plt
+from scipy import stats
+
+n = 50
+p2 = 0.9  # 성체생존율
+kt = list(range(n + 1))
+
+
+def X(p1):  # p1 = 새끼 -> 성체 생존율
+    pp = [250000]
+    for t in range(1, n + 1):
+        xx = pp[t - 1]
+        BP = xx * (0.5) * p1
+        pp.append(math.floor(xx * p2 + (BP)))
+    return pp
+
+
+fig, ax = plt.subplots()
+
+ax.plot(kt, X(0.95), label='p1=0.95') #2015년 값
+ax.plot(kt, X(0.285), label='p1=0.285') #2025년 값
+#ax.plot(kt, X(0.0), label='p1=0') #가정
+
+ax.set_xlabel('generation')
+
+# axis='y'를 빼면 안나옴
+ax.ticklabel_format(style='plain', axis='y')
+
+ax.legend()
+ax.set_title('population')
+
+plt.show()
+print("000")
