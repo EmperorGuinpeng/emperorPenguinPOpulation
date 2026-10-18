@@ -2,7 +2,7 @@ import math
 import matplotlib.pyplot as plt
 from scipy import stats
 
-n = 50
+n = 100
 p2 = 0.9  # 성체생존율
 kt = list(range(n + 1))
 
@@ -18,9 +18,11 @@ def X(p1):  # p1 = 새끼 -> 성체 생존율
 
 fig, ax = plt.subplots()
 
-ax.plot(kt, X(0.19), label='p1=0.95') #2015년 값
-ax.plot(kt, X(0.057), label='p1=0.285') #2025년 값
+ax.plot(kt, X(0.19), label='p1=0.19') #기존 값
+ax.plot(kt, X(0.057), label='p1=0.057') #2025년 값
 #ax.plot(kt, X(0.0), label='p1=0') #가정
+ax.axhline(0, color='gray', linestyle='--', linewidth=1)
+
 
 ax.set_xlabel('generation')
 
